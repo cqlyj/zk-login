@@ -25,3 +25,12 @@ generate-contract:
 
 simulate-verification-call:
 	@snarkjs zkey export soliditycalldata zk/proofs/public.json zk/proofs/proof.json
+
+deploy-verifier:
+	@forge script script/DeployVerifier.s.sol:DeployVerifier --rpc-url http://127.0.0.1:8545 --account default --broadcast -vvvv
+
+deploy-login:
+	@forge script script/DeployLogin.s.sol:DeployLogin --rpc-url http://127.0.0.1:8545 --account default --broadcast -vvvv
+
+register:
+	@forge script script/Interactions.s.sol:Register --rpc-url http://127.0.0.1:8545 --account default --broadcast -vvvv
