@@ -41,13 +41,12 @@ contract Login {
         // checks here, but for now just skip those
         // @TODO: add checks
 
-        uint256[5] memory pubSignals = [
-            wallet,
-            salt,
-            credential_hash,
-            nonce,
-            result_hash
-        ];
+        uint256[5] memory pubSignals;
+        pubSignals[0] = wallet;
+        pubSignals[1] = salt;
+        pubSignals[2] = credential_hash;
+        pubSignals[3] = nonce;
+        pubSignals[4] = result_hash;
 
         if (!zkVerifier.verifyProof(_pA, _pB, _pC, pubSignals)) {
             revert Login__InvalidProof();
